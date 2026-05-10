@@ -300,7 +300,7 @@ def build_spectrum_panel(state: BezierState) -> Panel:
     for v in segments:
         level = (v / max_v) * width
         filled = int(max(0, min(width, level)))
-        bars.append(f" [{'grey30' if filled == 1 else HIGHLIGHT}]{'█' * filled}[/]")
+        bars.append(f" [{'grey30' if filled <= 1 else HIGHLIGHT}]{'█' * filled}[/]")
 
     content = Text.from_markup("\n").join([Text.from_markup(b) for b in bars])
     return Panel(
