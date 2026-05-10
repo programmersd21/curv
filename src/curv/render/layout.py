@@ -29,7 +29,7 @@ ACCENT = "bright_cyan"
 DIM = "grey30"
 
 
-def build_layout(state: BezierState, width: int, height: int) -> Layout:
+def build_layout(state: BezierState, width: int, height: int, fps: float = 0.0) -> Layout:
     """
     Build a responsive, high-density 3-column technical layout.
     """
@@ -72,7 +72,7 @@ def build_layout(state: BezierState, width: int, height: int) -> Layout:
     header_text = Text.assemble(
         (" curv v1.0.0", f"bold {ACCENT}"),
         (f" {' ' * (width - 45)}", ""),
-        (f"session: {monotonic():.1f}s  fps: 120  ", DIM),
+        (f"session: {monotonic():.1f}s  fps: {fps:.0f}  ", DIM),
     )
     root["header"].update(header_text)
     root["header"].split_column(

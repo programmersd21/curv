@@ -67,7 +67,7 @@ class BezierState:
         return Point(
             0.5 + (self.p1.x - 0.5) * self.intensity,
             0.5 + (self.p1.y - 0.5) * self.intensity,
-        )
+        ).clamp(X_BOUNDS, Y_BOUNDS)
 
     @property
     def dna_p2(self) -> Point:
@@ -77,7 +77,7 @@ class BezierState:
         return Point(
             0.5 + (self.p2.x - 0.5) * self.intensity,
             0.5 + (self.p2.y - 0.5) * self.intensity,
-        )
+        ).clamp(X_BOUNDS, Y_BOUNDS)
 
     # Engagement features
     history: list[tuple[Point, Point]] = field(default_factory=list)

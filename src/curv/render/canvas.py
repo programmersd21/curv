@@ -69,7 +69,7 @@ class BrailleCanvas:
             self.dots[(dot_x, dot_y)] = layer
 
     def draw_line(
-        self, x0: int, y0: int, x1: int, y1: int, layer: str, thickness: int = 1
+        self, x0: int, y0: int, x1: int, y1: int, layer: str
     ) -> None:
         """
         Draw a line in the specified layer using Bresenham's algorithm.
