@@ -25,7 +25,9 @@ class TestGetYAtX:
         p1 = (0.3333, 0.3333)
         p2 = (0.6666, 0.6666)
         # For a linear curve, y = x
-        assert get_y_at_x(0.5, (0.0, 0.0), p1, p2, (1.0, 1.0)) == pytest.approx(0.5, abs=1e-3)
+        assert get_y_at_x(0.5, (0.0, 0.0), p1, p2, (1.0, 1.0)) == pytest.approx(
+            0.5, abs=1e-3
+        )
 
     def test_get_y_at_x_ease_in(self) -> None:
         """Test eased curve (ease-in like)."""
