@@ -45,6 +45,7 @@ class App:
         # Target 120 FPS for that "smooth af" feel
         target_fps = 120
         frame_duration = 1.0 / target_fps
+        actual_fps = float(target_fps)
 
         try:
             with Live(
@@ -74,7 +75,7 @@ class App:
                         break
 
                     # Build and render layout
-                    layout = build_layout(self._state, width, height)
+                    layout = build_layout(self._state, width, height, fps=actual_fps)
                     live.update(layout, refresh=True)
 
                     # High-precision frame timing
@@ -83,12 +84,18 @@ class App:
                     if sleep_time > 0:
                         sleep(sleep_time)
 
+                    # Track actual FPS with exponential moving average
+                    frame_time = monotonic() - start_time
+                    if frame_time > 0:
+                        instant_fps = 1.0 / frame_time
+                        actual_fps = actual_fps * 0.9 + instant_fps * 0.1
+
         finally:
             self._running = False
 
         # Print final output to scrollback
-        p1 = (self._state.p1.x, self._state.p1.y)
-        p2 = (self._state.p2.x, self._state.p2.y)
+        p1 = (self._state.dna_p1.x, self._state.dna_p1.y)
+        p2 = (self._state.dna_p2.x, self._state.dna_p2.y)
 
         css = css_string(p1, p2).lower()
         hypr = hypr_string(p1, p2).lower()
