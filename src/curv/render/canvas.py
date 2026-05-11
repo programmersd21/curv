@@ -68,9 +68,7 @@ class BrailleCanvas:
         if new_priority >= current_priority:
             self.dots[(dot_x, dot_y)] = layer
 
-    def draw_line(
-        self, x0: int, y0: int, x1: int, y1: int, layer: str
-    ) -> None:
+    def draw_line(self, x0: int, y0: int, x1: int, y1: int, layer: str) -> None:
         """
         Draw a line in the specified layer using Bresenham's algorithm.
         """

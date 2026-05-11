@@ -405,8 +405,12 @@ def build_physics_panel(state: BezierState) -> Panel:
     import math
 
     # tension: derived from distance p0->p1 and p2->p3
-    d1 = math.sqrt((state.dna_p1.x - state.p0.x) ** 2 + (state.dna_p1.y - state.p0.y) ** 2)
-    d2 = math.sqrt((state.p3.x - state.dna_p2.x) ** 2 + (state.p3.y - state.dna_p2.y) ** 2)
+    d1 = math.sqrt(
+        (state.dna_p1.x - state.p0.x) ** 2 + (state.dna_p1.y - state.p0.y) ** 2
+    )
+    d2 = math.sqrt(
+        (state.p3.x - state.dna_p2.x) ** 2 + (state.p3.y - state.dna_p2.y) ** 2
+    )
     tension = (d1 + d2) * 5.0
 
     # friction: derived from velocity variance

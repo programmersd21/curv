@@ -29,7 +29,9 @@ ACCENT = "bright_cyan"
 DIM = "grey30"
 
 
-def build_layout(state: BezierState, width: int, height: int, fps: float = 0.0) -> Layout:
+def build_layout(
+    state: BezierState, width: int, height: int, fps: float = 0.0
+) -> Layout:
     """
     Build a responsive, high-density 3-column technical layout.
     """

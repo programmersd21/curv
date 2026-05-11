@@ -197,7 +197,9 @@ def handle_key(state: BezierState, key: str) -> tuple[BezierState, bool]:
 
     # C: copy to clipboard
     if key.lower() == "c":
-        css = css_string((state.dna_p1.x, state.dna_p1.y), (state.dna_p2.x, state.dna_p2.y))
+        css = css_string(
+            (state.dna_p1.x, state.dna_p1.y), (state.dna_p2.x, state.dna_p2.y)
+        )
         copy_to_clipboard(css)
         return (
             dataclasses.replace(
